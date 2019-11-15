@@ -1,0 +1,1172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FMSDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FMSDB.dbo.M_Services' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="M_Services">
+          <Property Name="Id" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="M_Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="M_SupplierVehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="VehicleId" Type="int" />
+        </EntityType>
+        <EntityType Name="M_Vehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="VehicleName" Type="nvarchar" MaxLength="255" />
+          <Property Name="VIN" Type="nvarchar" MaxLength="255" />
+          <Property Name="LicensePlate" Type="nvarchar" MaxLength="255" />
+          <Property Name="VehicleTypeId" Type="int" />
+          <Property Name="VehicleYear" Type="int" />
+          <Property Name="VehicleMakeId" Type="int" />
+          <Property Name="VehicleModelId" Type="int" />
+          <Property Name="Trim" Type="nvarchar" MaxLength="255" />
+          <Property Name="RegistrationState" Type="nvarchar" MaxLength="255" />
+          <Property Name="Color" Type="nvarchar" MaxLength="255" />
+          <Property Name="VehicleBodyTypeId" Type="int" />
+          <Property Name="VehicleFuelTypeID" Type="int" />
+          <Property Name="FuelQuality" Type="float" />
+          <Property Name="FuelTank1Capacity" Type="float" />
+          <Property Name="FuelTank2Capacity" Type="float" />
+          <Property Name="OilCapacity" Type="float" />
+          <Property Name="FileName" Type="float" />
+        </EntityType>
+        <EntityType Name="M_VehicleBodyType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="M_VehicleFuelType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="M_VehicleMake">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="M_VehicleModel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="M_VehicleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ParentId" Type="uniqueidentifier" />
+          <Property Name="IsParent" Type="bit" Nullable="false" />
+          <Property Name="Controller" Type="nvarchar" MaxLength="50" />
+          <Property Name="Action" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameVI" Type="nvarchar" MaxLength="250" />
+          <Property Name="NameEN" Type="nvarchar" MaxLength="250" />
+          <Property Name="OrderNumber" Type="int" Nullable="false" />
+          <Property Name="ResourceID" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameFunction" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="MenuStatus" Type="tinyint" Nullable="false" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="50" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="ActiveFag" Type="tinyint" Nullable="false" />
+          <Property Name="Method" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="MenuRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MenuId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="ActiveFag" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quote_Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="TravelDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+          <Property Name="LastEditByXid" Type="int" />
+          <Property Name="TotalPrice" Type="money" />
+          <Property Name="PickupLocation" Type="nvarchar" MaxLength="500" />
+          <Property Name="DropoffLocation" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContactTel" Type="nvarchar" MaxLength="500" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Quote_RequestVehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="QuoteRequestXid" Type="int" />
+          <Property Name="ServicesXid" Type="int" />
+          <Property Name="VehicelXid" Type="int" />
+          <Property Name="Price" Type="money" />
+          <Property Name="DiscountPrice" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Tax" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TotalPrice" Type="money" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Res_Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="TravelDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+          <Property Name="LastEditByXid" Type="int" />
+          <Property Name="TotalPrice" Type="money" />
+          <Property Name="PickupLocation" Type="nvarchar" MaxLength="500" />
+          <Property Name="DropoffLocation" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContactTel" Type="nvarchar" MaxLength="500" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Res_RequestVehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="QuoteRequestXid" Type="int" />
+          <Property Name="ServicesXid" Type="int" />
+          <Property Name="VehicelXid" Type="int" />
+          <Property Name="Price" Type="money" />
+          <Property Name="DiscountPrice" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Tax" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TotalPrice" Type="money" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Resources">
+          <Key>
+            <PropertyRef Name="ResourceID" />
+          </Key>
+          <Property Name="ResourceID" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ResourceText0" Type="nvarchar" MaxLength="400" />
+          <Property Name="DefaultText0" Type="nvarchar" MaxLength="400" />
+          <Property Name="ResourceText1" Type="nvarchar" MaxLength="400" />
+          <Property Name="DefaultText1" Type="nvarchar" MaxLength="400" />
+          <Property Name="ResourceText2" Type="nvarchar" MaxLength="400" />
+          <Property Name="DefaultText2" Type="nvarchar" MaxLength="400" />
+          <Property Name="ResourceText3" Type="nvarchar" MaxLength="400" />
+          <Property Name="DefaultText3" Type="nvarchar" MaxLength="400" />
+          <Property Name="ResourceText4" Type="nvarchar" MaxLength="400" />
+          <Property Name="DefaultText4" Type="nvarchar" MaxLength="400" />
+          <Property Name="ResourceText5" Type="nvarchar" MaxLength="400" />
+          <Property Name="DefaultText5" Type="nvarchar" MaxLength="400" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleDesc" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ServicesContract">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="SupplierId" Type="int" />
+        </EntityType>
+        <EntityType Name="ServicesContractDates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="ServicesContractId" Type="int" />
+          <Property Name="FromDate" Type="datetime" />
+          <Property Name="ToDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+          <Property Name="LastEditByXid" Type="nchar" MaxLength="10" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ServicesContractRates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ServicesContractId" Type="int" />
+          <Property Name="VehicleXid" Type="int" />
+          <Property Name="SellRate" Type="money" />
+          <Property Name="BuyRate" Type="money" />
+          <Property Name="LastEdit" Type="datetime" Nullable="false" />
+          <Property Name="LastEditByXid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemLogs">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Module" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserFunction" Type="int" />
+          <Property Name="EventResult" Type="int" />
+          <Property Name="FuncDateTime" Type="datetime" />
+          <Property Name="Source" Type="nvarchar" MaxLength="100" />
+          <Property Name="Transdata" Type="nvarchar" MaxLength="1000" />
+          <Property Name="WSName" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="SystemSetting">
+          <Key>
+            <PropertyRef Name="SettingId" />
+          </Key>
+          <Property Name="SettingId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserInfos">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="300" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="300" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="Picture" Type="varbinary(max)" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Ext" Type="nvarchar" MaxLength="10" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="LanguageID" Type="uniqueidentifier" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="FirstWorkingDate" Type="date" />
+          <Property Name="UserHRIS" Type="nvarchar" MaxLength="100" />
+          <Property Name="Diploma" Type="nvarchar(max)" />
+          <Property Name="Position" Type="nvarchar" MaxLength="100" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsCustomer" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MenuRole_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="MenuRole" Type="Self.MenuRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuRole">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuRole_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="MenuRole" Type="Self.MenuRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="MenuRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuRole_UserInfos">
+          <End Role="UserInfos" Type="Self.UserInfos" Multiplicity="0..1" />
+          <End Role="MenuRole" Type="Self.MenuRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfos">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="MenuRole">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_UserInfos">
+          <End Role="UserInfos" Type="Self.UserInfos" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfos">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FMSDBModelStoreContainer">
+          <EntitySet Name="M_Supplier" EntityType="Self.M_Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_SupplierVehicle" EntityType="Self.M_SupplierVehicle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Vehicle" EntityType="Self.M_Vehicle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_VehicleBodyType" EntityType="Self.M_VehicleBodyType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_VehicleFuelType" EntityType="Self.M_VehicleFuelType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_VehicleMake" EntityType="Self.M_VehicleMake" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_VehicleModel" EntityType="Self.M_VehicleModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_VehicleType" EntityType="Self.M_VehicleType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuRole" EntityType="Self.MenuRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quote_Request" EntityType="Self.Quote_Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quote_RequestVehicle" EntityType="Self.Quote_RequestVehicle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Res_Request" EntityType="Self.Res_Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Res_RequestVehicle" EntityType="Self.Res_RequestVehicle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resources" EntityType="Self.Resources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesContract" EntityType="Self.ServicesContract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesContractDates" EntityType="Self.ServicesContractDates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesContractRates" EntityType="Self.ServicesContractRates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemLogs" EntityType="Self.SystemLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemSetting" EntityType="Self.SystemSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfos" EntityType="Self.UserInfos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MenuRole_Menu" Association="Self.FK_MenuRole_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuRole" EntitySet="MenuRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuRole_Roles" Association="Self.FK_MenuRole_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="MenuRole" EntitySet="MenuRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuRole_UserInfos" Association="Self.FK_MenuRole_UserInfos">
+            <End Role="UserInfos" EntitySet="UserInfos" />
+            <End Role="MenuRole" EntitySet="MenuRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="Self.FK_UserRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_UserInfos" Association="Self.FK_UserRoles_UserInfos">
+            <End Role="UserInfos" EntitySet="UserInfos" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FMSDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="M_Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_SupplierVehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="M_Vehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="VehicleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VIN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LicensePlate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleTypeId" Type="Int32" />
+          <Property Name="VehicleYear" Type="Int32" />
+          <Property Name="VehicleMakeId" Type="Int32" />
+          <Property Name="VehicleModelId" Type="Int32" />
+          <Property Name="Trim" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleBodyTypeId" Type="Int32" />
+          <Property Name="VehicleFuelTypeID" Type="Int32" />
+          <Property Name="FuelQuality" Type="Double" />
+          <Property Name="FuelTank1Capacity" Type="Double" />
+          <Property Name="FuelTank2Capacity" Type="Double" />
+          <Property Name="OilCapacity" Type="Double" />
+          <Property Name="FileName" Type="Double" />
+        </EntityType>
+        <EntityType Name="M_VehicleBodyType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_VehicleFuelType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_VehicleMake">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_VehicleModel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_VehicleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ParentId" Type="Guid" />
+          <Property Name="IsParent" Type="Boolean" Nullable="false" />
+          <Property Name="Controller" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameVI" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NameEN" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="ResourceID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameFunction" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="MenuStatus" Type="Byte" Nullable="false" />
+          <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActiveFag" Type="Byte" Nullable="false" />
+          <Property Name="Method" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuRoles" Relationship="Self.FK_MenuRole_Menu" FromRole="Menu" ToRole="MenuRole" />
+        </EntityType>
+        <EntityType Name="MenuRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <Property Name="MenuId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActiveFag" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK_MenuRole_Menu" FromRole="MenuRole" ToRole="Menu" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_MenuRole_Roles" FromRole="MenuRole" ToRole="Roles" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_MenuRole_UserInfos" FromRole="MenuRole" ToRole="UserInfos" />
+        </EntityType>
+        <EntityType Name="Quote_Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TravelDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+          <Property Name="LastEditByXid" Type="Int32" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PickupLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DropoffLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ContactTel" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Quote_RequestVehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="QuoteRequestXid" Type="Int32" />
+          <Property Name="ServicesXid" Type="Int32" />
+          <Property Name="VehicelXid" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscountPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Res_Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TravelDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+          <Property Name="LastEditByXid" Type="Int32" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PickupLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DropoffLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ContactTel" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Res_RequestVehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="QuoteRequestXid" Type="Int32" />
+          <Property Name="ServicesXid" Type="Int32" />
+          <Property Name="VehicelXid" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscountPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Resource">
+          <Key>
+            <PropertyRef Name="ResourceID" />
+          </Key>
+          <Property Name="ResourceID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResourceText0" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultText0" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ResourceText1" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultText1" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ResourceText2" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultText2" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ResourceText3" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultText3" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ResourceText4" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultText4" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ResourceText5" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultText5" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Guid" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleDesc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuRoles" Relationship="Self.FK_MenuRole_Roles" FromRole="Roles" ToRole="MenuRole" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_Roles" FromRole="Roles" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="ServicesContract">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ServicesContractDate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ServicesContractId" Type="Int32" />
+          <Property Name="FromDate" Type="DateTime" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+          <Property Name="LastEditByXid" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ServicesContractRate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ServicesContractId" Type="Int32" />
+          <Property Name="VehicleXid" Type="Int32" />
+          <Property Name="SellRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BuyRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LastEdit" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastEditByXid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemLog">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Guid" Nullable="false" />
+          <Property Name="Module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserFunction" Type="Int32" />
+          <Property Name="EventResult" Type="Int32" />
+          <Property Name="FuncDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Source" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Transdata" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="WSName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="HomePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Ext" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="LanguageID" Type="Guid" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="FirstWorkingDate" Type="DateTime" Precision="0" />
+          <Property Name="UserHRIS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Diploma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsCustomer" Type="Boolean" />
+          <NavigationProperty Name="MenuRoles" Relationship="Self.FK_MenuRole_UserInfos" FromRole="UserInfos" ToRole="MenuRole" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_UserInfos" FromRole="UserInfos" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_UserRoles_Roles" FromRole="UserRoles" ToRole="Roles" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_UserRoles_UserInfos" FromRole="UserRoles" ToRole="UserInfos" />
+        </EntityType>
+        <Association Name="FK_MenuRole_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="MenuRole" Type="Self.MenuRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuRole">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuRole_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="MenuRole" Type="Self.MenuRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="MenuRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuRole_UserInfos">
+          <End Role="UserInfos" Type="Self.UserInfo" Multiplicity="0..1" />
+          <End Role="MenuRole" Type="Self.MenuRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfos">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="MenuRole">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_UserInfos">
+          <End Role="UserInfos" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfos">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FMSDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="M_Supplier" EntityType="Self.M_Supplier" />
+          <EntitySet Name="M_SupplierVehicle" EntityType="Self.M_SupplierVehicle" />
+          <EntitySet Name="M_Vehicle" EntityType="Self.M_Vehicle" />
+          <EntitySet Name="M_VehicleBodyType" EntityType="Self.M_VehicleBodyType" />
+          <EntitySet Name="M_VehicleFuelType" EntityType="Self.M_VehicleFuelType" />
+          <EntitySet Name="M_VehicleMake" EntityType="Self.M_VehicleMake" />
+          <EntitySet Name="M_VehicleModel" EntityType="Self.M_VehicleModel" />
+          <EntitySet Name="M_VehicleType" EntityType="Self.M_VehicleType" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="MenuRoles" EntityType="Self.MenuRole" />
+          <EntitySet Name="Quote_Request" EntityType="Self.Quote_Request" />
+          <EntitySet Name="Quote_RequestVehicle" EntityType="Self.Quote_RequestVehicle" />
+          <EntitySet Name="Res_Request" EntityType="Self.Res_Request" />
+          <EntitySet Name="Res_RequestVehicle" EntityType="Self.Res_RequestVehicle" />
+          <EntitySet Name="Resources" EntityType="Self.Resource" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="ServicesContracts" EntityType="Self.ServicesContract" />
+          <EntitySet Name="ServicesContractDates" EntityType="Self.ServicesContractDate" />
+          <EntitySet Name="ServicesContractRates" EntityType="Self.ServicesContractRate" />
+          <EntitySet Name="SystemLogs" EntityType="Self.SystemLog" />
+          <EntitySet Name="UserInfos" EntityType="Self.UserInfo" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <AssociationSet Name="FK_MenuRole_Menu" Association="Self.FK_MenuRole_Menu">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="MenuRole" EntitySet="MenuRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuRole_Roles" Association="Self.FK_MenuRole_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="MenuRole" EntitySet="MenuRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuRole_UserInfos" Association="Self.FK_MenuRole_UserInfos">
+            <End Role="UserInfos" EntitySet="UserInfos" />
+            <End Role="MenuRole" EntitySet="MenuRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="Self.FK_UserRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_UserInfos" Association="Self.FK_UserRoles_UserInfos">
+            <End Role="UserInfos" EntitySet="UserInfos" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <EntitySet Name="SystemSettings" EntityType="FMSDBModel.SystemSetting" />
+        </EntityContainer>
+        <EntityType Name="SystemSetting">
+          <Key>
+            <PropertyRef Name="SettingId" />
+          </Key>
+          <Property Name="SettingId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FMSDBModelStoreContainer" CdmEntityContainer="FMSDBEntities">
+          <EntitySetMapping Name="M_Supplier">
+            <EntityTypeMapping TypeName="FMSDBModel.M_Supplier">
+              <MappingFragment StoreEntitySet="M_Supplier">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_SupplierVehicle">
+            <EntityTypeMapping TypeName="FMSDBModel.M_SupplierVehicle">
+              <MappingFragment StoreEntitySet="M_SupplierVehicle">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Vehicle">
+            <EntityTypeMapping TypeName="FMSDBModel.M_Vehicle">
+              <MappingFragment StoreEntitySet="M_Vehicle">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
+                <ScalarProperty Name="VIN" ColumnName="VIN" />
+                <ScalarProperty Name="LicensePlate" ColumnName="LicensePlate" />
+                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+                <ScalarProperty Name="VehicleYear" ColumnName="VehicleYear" />
+                <ScalarProperty Name="VehicleMakeId" ColumnName="VehicleMakeId" />
+                <ScalarProperty Name="VehicleModelId" ColumnName="VehicleModelId" />
+                <ScalarProperty Name="Trim" ColumnName="Trim" />
+                <ScalarProperty Name="RegistrationState" ColumnName="RegistrationState" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="VehicleBodyTypeId" ColumnName="VehicleBodyTypeId" />
+                <ScalarProperty Name="VehicleFuelTypeID" ColumnName="VehicleFuelTypeID" />
+                <ScalarProperty Name="FuelQuality" ColumnName="FuelQuality" />
+                <ScalarProperty Name="FuelTank1Capacity" ColumnName="FuelTank1Capacity" />
+                <ScalarProperty Name="FuelTank2Capacity" ColumnName="FuelTank2Capacity" />
+                <ScalarProperty Name="OilCapacity" ColumnName="OilCapacity" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_VehicleBodyType">
+            <EntityTypeMapping TypeName="FMSDBModel.M_VehicleBodyType">
+              <MappingFragment StoreEntitySet="M_VehicleBodyType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_VehicleFuelType">
+            <EntityTypeMapping TypeName="FMSDBModel.M_VehicleFuelType">
+              <MappingFragment StoreEntitySet="M_VehicleFuelType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_VehicleMake">
+            <EntityTypeMapping TypeName="FMSDBModel.M_VehicleMake">
+              <MappingFragment StoreEntitySet="M_VehicleMake">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_VehicleModel">
+            <EntityTypeMapping TypeName="FMSDBModel.M_VehicleModel">
+              <MappingFragment StoreEntitySet="M_VehicleModel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_VehicleType">
+            <EntityTypeMapping TypeName="FMSDBModel.M_VehicleType">
+              <MappingFragment StoreEntitySet="M_VehicleType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="FMSDBModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+                <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="NameVI" ColumnName="NameVI" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="NameFunction" ColumnName="NameFunction" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="MenuStatus" ColumnName="MenuStatus" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="ActiveFag" ColumnName="ActiveFag" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuRoles">
+            <EntityTypeMapping TypeName="FMSDBModel.MenuRole">
+              <MappingFragment StoreEntitySet="MenuRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="ActiveFag" ColumnName="ActiveFag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quote_Request">
+            <EntityTypeMapping TypeName="FMSDBModel.Quote_Request">
+              <MappingFragment StoreEntitySet="Quote_Request">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="LastEditByXid" ColumnName="LastEditByXid" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="PickupLocation" ColumnName="PickupLocation" />
+                <ScalarProperty Name="DropoffLocation" ColumnName="DropoffLocation" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quote_RequestVehicle">
+            <EntityTypeMapping TypeName="FMSDBModel.Quote_RequestVehicle">
+              <MappingFragment StoreEntitySet="Quote_RequestVehicle">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QuoteRequestXid" ColumnName="QuoteRequestXid" />
+                <ScalarProperty Name="ServicesXid" ColumnName="ServicesXid" />
+                <ScalarProperty Name="VehicelXid" ColumnName="VehicelXid" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Res_Request">
+            <EntityTypeMapping TypeName="FMSDBModel.Res_Request">
+              <MappingFragment StoreEntitySet="Res_Request">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="LastEditByXid" ColumnName="LastEditByXid" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="PickupLocation" ColumnName="PickupLocation" />
+                <ScalarProperty Name="DropoffLocation" ColumnName="DropoffLocation" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Res_RequestVehicle">
+            <EntityTypeMapping TypeName="FMSDBModel.Res_RequestVehicle">
+              <MappingFragment StoreEntitySet="Res_RequestVehicle">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QuoteRequestXid" ColumnName="QuoteRequestXid" />
+                <ScalarProperty Name="ServicesXid" ColumnName="ServicesXid" />
+                <ScalarProperty Name="VehicelXid" ColumnName="VehicelXid" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resources">
+            <EntityTypeMapping TypeName="FMSDBModel.Resource">
+              <MappingFragment StoreEntitySet="Resources">
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="ResourceText0" ColumnName="ResourceText0" />
+                <ScalarProperty Name="DefaultText0" ColumnName="DefaultText0" />
+                <ScalarProperty Name="ResourceText1" ColumnName="ResourceText1" />
+                <ScalarProperty Name="DefaultText1" ColumnName="DefaultText1" />
+                <ScalarProperty Name="ResourceText2" ColumnName="ResourceText2" />
+                <ScalarProperty Name="DefaultText2" ColumnName="DefaultText2" />
+                <ScalarProperty Name="ResourceText3" ColumnName="ResourceText3" />
+                <ScalarProperty Name="DefaultText3" ColumnName="DefaultText3" />
+                <ScalarProperty Name="ResourceText4" ColumnName="ResourceText4" />
+                <ScalarProperty Name="DefaultText4" ColumnName="DefaultText4" />
+                <ScalarProperty Name="ResourceText5" ColumnName="ResourceText5" />
+                <ScalarProperty Name="DefaultText5" ColumnName="DefaultText5" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="FMSDBModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesContracts">
+            <EntityTypeMapping TypeName="FMSDBModel.ServicesContract">
+              <MappingFragment StoreEntitySet="ServicesContract">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesContractDates">
+            <EntityTypeMapping TypeName="FMSDBModel.ServicesContractDate">
+              <MappingFragment StoreEntitySet="ServicesContractDates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ServicesContractId" ColumnName="ServicesContractId" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="LastEditByXid" ColumnName="LastEditByXid" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesContractRates">
+            <EntityTypeMapping TypeName="FMSDBModel.ServicesContractRate">
+              <MappingFragment StoreEntitySet="ServicesContractRates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ServicesContractId" ColumnName="ServicesContractId" />
+                <ScalarProperty Name="VehicleXid" ColumnName="VehicleXid" />
+                <ScalarProperty Name="SellRate" ColumnName="SellRate" />
+                <ScalarProperty Name="BuyRate" ColumnName="BuyRate" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="LastEditByXid" ColumnName="LastEditByXid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemLogs">
+            <EntityTypeMapping TypeName="FMSDBModel.SystemLog">
+              <MappingFragment StoreEntitySet="SystemLogs">
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserFunction" ColumnName="UserFunction" />
+                <ScalarProperty Name="EventResult" ColumnName="EventResult" />
+                <ScalarProperty Name="FuncDateTime" ColumnName="FuncDateTime" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Transdata" ColumnName="Transdata" />
+                <ScalarProperty Name="WSName" ColumnName="WSName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfos">
+            <EntityTypeMapping TypeName="FMSDBModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfos">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Ext" ColumnName="Ext" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FirstWorkingDate" ColumnName="FirstWorkingDate" />
+                <ScalarProperty Name="UserHRIS" ColumnName="UserHRIS" />
+                <ScalarProperty Name="Diploma" ColumnName="Diploma" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="IsCustomer" ColumnName="IsCustomer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="FMSDBModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemSettings">
+            <EntityTypeMapping TypeName="FMSDBModel.SystemSetting">
+              <MappingFragment StoreEntitySet="SystemSetting">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
