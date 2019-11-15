@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4488D8C7-4ABD-4ABE-A9D1-E6273C781BBB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VanChi.Business.Concrete</RootNamespace>
+    <AssemblyName>VanChi.Business.Concrete</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business.cs" />
+    <Compile Include="CallApiBusiness.cs" />
+    <Compile Include="ContainerManagementBusiness.cs" />
+    <Compile Include="ObjectBusiness\APIBusiness.cs" />
+    <Compile Include="ObjectBusiness\BaseObjectBusiness.cs" />
+    <Compile Include="ObjectBusiness\MenuBusiness.cs" />
+    <Compile Include="ObjectBusiness\MenuRoleBusiness.cs" />
+    <Compile Include="ObjectBusiness\ResourceBusiness.cs" />
+    <Compile Include="ObjectBusiness\RoleBusiness.cs" />
+    <Compile Include="ObjectBusiness\RoleFunctionBusiness.cs" />
+    <Compile Include="ObjectBusiness\SystemLogBusiness.cs" />
+    <Compile Include="ObjectBusiness\SystemSettingBusiness.cs" />
+    <Compile Include="ObjectBusiness\UserInfoBusiness.cs" />
+    <Compile Include="ObjectBusiness\UserRoleBusiness.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedBusiness.cs" />
+    <Compile Include="SystemManagementBusiness.cs" />
+    <Compile Include="UserManagementBusiness.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VanChi.Business.Common\VanChi.Business.Common.csproj">
+      <Project>{373680fe-82cf-45dc-8a47-d176783440fa}</Project>
+      <Name>VanChi.Business.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VanChi.Business.DTO\VanChi.Business.DTO.csproj">
+      <Project>{db1cabae-cd63-4d75-bf64-97ec67f464eb}</Project>
+      <Name>VanChi.Business.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VanChi.Business.Interface\VanChi.Business.Interface.csproj">
+      <Project>{7326efa9-b1cf-432a-bf1e-ceae11977c79}</Project>
+      <Name>VanChi.Business.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VanChi.Data\VanChi.Data.csproj">
+      <Project>{4c293e3f-9f3d-432d-ab3d-8ad5a06a3dbc}</Project>
+      <Name>VanChi.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VanChi.Logs\VanChi.Logs.csproj">
+      <Project>{e9cc3068-9d09-4ed2-9b60-6d82faaea198}</Project>
+      <Name>VanChi.Logs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VanChi.Repository.Interface\VanChi.Repository.Interface.csproj">
+      <Project>{e593eae6-6d39-4fed-96f3-b5bbdd5f7f72}</Project>
+      <Name>VanChi.Repository.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VanChi.Utility\VanChi.Utility.csproj">
+      <Project>{c9ce25c5-8c81-4d3a-98ee-3a7072e3e9ad}</Project>
+      <Name>VanChi.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
