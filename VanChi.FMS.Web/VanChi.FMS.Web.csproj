@@ -8459,6 +8459,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_ContentHeaderPartial.cshtml" />
+    <Content Include="Views\Shared\_ControlSidebarPartial.cshtml" />
+    <Content Include="Views\Shared\_CookieConsentPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout - 2.3.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Shared\_LeftSideColumnPartial.cshtml" />
+    <Content Include="Views\Shared\_MainFooterPartial.cshtml" />
+    <Content Include="Views\Shared\_MainHeaderPartial.cshtml" />
+    <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
