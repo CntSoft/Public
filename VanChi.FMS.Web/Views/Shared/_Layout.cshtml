@@ -27,6 +27,14 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+     @*@if (IsSectionDefined("Meta"))
+    {
+        @RenderSection("Meta", required: false)
+    }
+    @if (IsSectionDefined("Title"))
+    {
+        @RenderSection("Title", required: false)
+    }*@
 </head>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
@@ -52,7 +60,7 @@
         <!-- Control Sidebar -->
         @Html.Partial("_ControlSidebarPartial")
         <!-- Add the sidebar's background. This div must be placed
-    immediately after the control sidebar -->
+        immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
     <!-- jQuery 2.1.4 -->
@@ -74,7 +82,7 @@
             //Initialize Select2 Elements
             $('.select2').select2()
 
-           
+
             //Date picker
             $('#datepicker1').datepicker({
                 //autoclose: true
@@ -87,6 +95,8 @@
             })
         })
     </script>
+    @*@RenderSection("Scripts", required: false)*@
+    @Html.EJS().ScriptManager()
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "DataGridFeatures";
+}
+@{
+    List<object> cols = new List<object>();
+    cols.Add(new { field = "OrderDate", direction = "Ascending" });
+    cols.Add(new { field = "Freight", direction = "Descending" });
+}
+<h2>DataGridFeatures</h2>
+<li> Grid Samples - Default</li>
+<li> Grouping</li>
+<li> Sorting</li>
+<li> Filtering</li>
+<li> Selection</li>
+<li> Aggregates</li>
+<li> Paging</li>
+<li> Column Resizing</li>
+<li> Editing - Normal</li>
+<li> Theme - Material</li>
+<br/>
+<br/>
+<div id = "ControlRegion">
+@Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSorting().AllowFiltering().AllowGrouping().AllowResizing(true).Columns(col =>
+   {
+       col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).MinWidth("120").Width("200").MaxWidth("300").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("CustomerID").HeaderText("Customer Name").Width("150").MinWidth("8").Add();
+       col.Field("OrderDate").HeaderText("Order Date").Width("200").EditType("datepickeredit").MinWidth("8").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("Freight").HeaderText("Freight").Width("150").MinWidth("8").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("ShipCountry").HeaderText("Ship Country").EditType("dropdownedit").MinWidth("8").Width("300").Add();
+       col.Field("ShippedDate").HeaderText("Shipped Date").Width("200").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("ShipName").HeaderText("Ship Name").EditType("dropdownedit").MinWidth("8").Width("200").Add();
+       col.Field("Verified").HeaderText("Verified").EditType("booleanedit").DisplayAsCheckBox(true).Type("boolean").MinWidth("8").Width("200").Add();
+   }).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).AllowPaging().PageSettings(page => page.PageCount(2)).GroupSettings(group => group.Columns(new string[] { "CustomerID" })).Aggregates(agg =>
+{
+    agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Freight", Type = "Sum", GroupFooterTemplate = "Total units: ${Sum}" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Verified", Type = "Truecount", GroupFooterTemplate = "Verified: ${Truecount}" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Freight", Type = "Max", GroupCaptionTemplate = "Maximum: ${Max}" } }).Add();
+}).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).SortSettings(sort => sort.Columns(cols)).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Menu); }).Render()
+</div>

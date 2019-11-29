@@ -264,6 +264,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ViewsController.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\ResultModel.cs" />
@@ -8468,6 +8469,7 @@
     <Content Include="Views\Shared\_MainFooterPartial.cshtml" />
     <Content Include="Views\Shared\_MainHeaderPartial.cshtml" />
     <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
