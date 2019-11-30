@@ -188,6 +188,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ServiceContractController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -7989,6 +7990,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layoutlte.cshtml" />
+    <Content Include="Views\Shared\_ContentHeaderPartial.cshtml" />
+    <Content Include="Views\Shared\_ControlSidebarPartial.cshtml" />
+    <Content Include="Views\Shared\_CookieConsentPartial.cshtml" />
+    <Content Include="Views\Shared\_LeftSideColumnPartial.cshtml" />
+    <Content Include="Views\Shared\_MainFooterPartial.cshtml" />
+    <Content Include="Views\Shared\_MainHeaderPartial.cshtml" />
+    <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <Content Include="Views\ServiceContract\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DataGrid\DataGridFeatures.cshtml" />

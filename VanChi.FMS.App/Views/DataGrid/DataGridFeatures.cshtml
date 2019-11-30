@@ -6,19 +6,6 @@
     cols.Add(new { field = "OrderDate", direction = "Ascending" });
     cols.Add(new { field = "Freight", direction = "Descending" });
 }
-<h2>DataGridFeatures</h2>
-<li> Grid Samples - Default</li>
-<li> Grouping</li>
-<li> Sorting</li>
-<li> Filtering</li>
-<li> Selection</li>
-<li> Aggregates</li>
-<li> Paging</li>
-<li> Column Resizing</li>
-<li> Editing - Normal</li>
-<li> Theme - Material</li>
-<br/>
-<br/>
 <div id = "ControlRegion">
 @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSorting().AllowFiltering().AllowGrouping().AllowResizing(true).Columns(col =>
    {
