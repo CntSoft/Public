@@ -102,8 +102,8 @@ namespace VanChi.FMS.App.Models
         public static List<Orders> GetAllRecords()
         {
             List<Orders> orders = new List<Orders>();
-            int code = 10000;
-            for (int i = 1; i < 10; i++)
+            int code = 10000000;
+            for (int i = 1; i < 10000000; i++)
             {
                 orders.Add(new Orders(code + 1, "ALFKI", i + 0, 2.32m * i, false, new DateTime(1991, 05, 15), "Berlin", "Simons bistro", "Denmark", new DateTime(1996, 7, 16), "Kirchgasse 6"));
                 orders.Add(new Orders(code + 2, "ANATR", i + 2, 3.32m * i, true, new DateTime(1990, 04, 04), "Madrid", "Queen Cozinha", "Brazil", new DateTime(1996, 9, 11), "Avda. Azteca 123"));
