@@ -212,6 +212,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MasterManagementController.cs" />
     <Compile Include="Controllers\ServiceContractController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -7323,6 +7324,10 @@
     <Content Include="Content\adminlte\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Content\adminlte\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Content\adminlte\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Content\css\responsive-tables.css" />
+    <Content Include="Content\css\site.css" />
+    <Content Include="Content\css\site.min.css" />
+    <Content Include="Content\css\tables.css" />
     <Content Include="Content\ej2\bootstrap.css" />
     <Content Include="Content\ej2\fabric.css" />
     <Content Include="Content\ej2\highcontrast.css" />
@@ -8025,6 +8030,10 @@
     <Content Include="Views\Shared\_MainHeaderPartial.cshtml" />
     <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Include="Views\ServiceContract\Index.cshtml" />
+    <Content Include="Views\MasterManagement\Services.cshtml" />
+    <Content Include="Views\MasterManagement\_DialogAddPartial.cshtml" />
+    <Content Include="Views\MasterManagement\_DialogEditpartial.cshtml" />
+    <Content Include="Views\MasterManagement\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DataGrid\DataGridFeatures.cshtml" />
