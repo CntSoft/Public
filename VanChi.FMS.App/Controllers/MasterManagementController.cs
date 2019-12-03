@@ -27,7 +27,7 @@ namespace VanChi.FMS.App.Controllers
         {
             return View();
         }
-        public ActionResult ServicesDatasource(DataManagerRequest dm)
+        public ActionResult ServicesDatasource(SearchAdvancedFilterDto dm)
         {
             IEnumerable DataSource = Orders.GetAllRecords();
             DataOperations operation = new DataOperations();
