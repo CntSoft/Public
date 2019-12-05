@@ -8034,6 +8034,7 @@
     <Content Include="Views\MasterManagement\_DialogAddPartial.cshtml" />
     <Content Include="Views\MasterManagement\_DialogEditpartial.cshtml" />
     <Content Include="Views\MasterManagement\Index.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DataGrid\DataGridFeatures.cshtml" />

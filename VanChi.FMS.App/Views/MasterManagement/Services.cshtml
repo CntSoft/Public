@@ -36,6 +36,7 @@
             var fn = $("#firstname").val();
             grid.query = new ej.data.Query().addParams('custom', { age: 12, name: fn, born: new Date() });
             grid.refresh();
+           
             debugger;
             //            $.ajax({
             //                url: "/Home/ServicesDatasource",
@@ -50,9 +51,9 @@
         });
         function complete(args) {
             if (args.requestType == "save") {
-                //Your dialog model to display the message after successful insert and edit actions
+                //Your dialog model to display the message after successful insert and edit actions 
             }
-        }
+        } 
         function actionComplete(args) {
             if (args.requestType === 'beginEdit' || args.requestType === 'add') {
                 let spinner = ej.popups.createSpinner({ target: args.dialog.element });
@@ -72,6 +73,9 @@
                         console.log(xhr);
                         ej.popups.hideSpinner(args.dialog.element);
                     });
+                    //ajax.successHandler = function (data) {
+                       
+                    //};
                 }
                 if (args.requestType === 'add') {
                     var ajax = new ej.base.Ajax({
@@ -88,9 +92,17 @@
                         ej.popups.hideSpinner(args.dialog.element);
                     });
                 }
-                if (args.requestType === 'update') {
-                    alert("update");
+            }
+            if (args.requestType === 'Edit') {
+                alert("Edit");
+            }
+            if (args.requestType == "save") {
+                if (args.action === 'add') {
                 }
+                else if (args.action === 'edit')  {
+
+                }
+                //Your dialog model to display the message after successful insert and edit actions 
             }
         }
     </script>

@@ -76,7 +76,7 @@ namespace VanChi.FMS.App.Controllers
         }
         public ActionResult Update(ExpandoObject value)
         {
-            return Json(value, JsonRequestBehavior.AllowGet);
+            return Json(new { data = value, message = "msg" }, JsonRequestBehavior.AllowGet);
         }
         public void Remove([FromBody]CRUDModel<Orders> Value)
         {
