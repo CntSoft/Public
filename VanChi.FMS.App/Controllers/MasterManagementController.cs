@@ -7,12 +7,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using VanChi.Business.DTO;
+using VanChi.Business.Interface;
+using VanChi.Data;
 using VanChi.FMS.App.Models;
 
 namespace VanChi.FMS.App.Controllers
 {
-    public class MasterManagementController : Controller
+    public class MasterManagementController : BaseController
     {
+        public MasterManagementController(IBusiness business) : base(business)
+        {
+
+        }
+
         // GET: MasterManagement
         public ActionResult Index()
         {
@@ -21,6 +29,8 @@ namespace VanChi.FMS.App.Controllers
         #region Services
         public ActionResult Services()
         {
+            ViewBag.country = this.Business.Shared_GetItems<CountryDTO,M_Country>();
+            ViewBag.city = this.Business.Shared_GetItems<CityDTO, M_City>();
             return View();
         }
         public ActionResult UrlAdaptor()
@@ -69,18 +79,18 @@ namespace VanChi.FMS.App.Controllers
             ViewBag.datasource = order;
             return PartialView("_DialogAddpartial");
         }
-        public ActionResult Insert([FromBody]CRUDModel<Orders> value)
+        public ActionResult Insert(ExpandoObject value)
         {
            
-            return Json(value.Value);
+            return Json(value);
         }
         public ActionResult Update(ExpandoObject value)
         {
             return Json(new { data = value, message = "msg" }, JsonRequestBehavior.AllowGet);
         }
-        public void Remove([FromBody]CRUDModel<Orders> Value)
+        public ActionResult Remove([FromBody]CRUDModel<Orders> Value)
         {
-            
+           return Json(Value.Value);
         }
         #endregion
     }

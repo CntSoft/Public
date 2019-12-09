@@ -3,14 +3,21 @@
 }
 
 @using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@using VanChi.Data
 
 <div class="col-lg-12 control-section">
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-            @Html.EJS().TextBox("firstname").Placeholder("First Name").Render()
+        <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
+            @Html.EJS().ComboBox("country").Placeholder("Select a country").PopupHeight("auto").AllowCustom(false).Change("countrychange").DataSource((IEnumerable<M_Country>
+                   )ViewBag.country).Fields(new ComboBoxFieldSettings { Text = "Name", Value = "Id" }).Render()
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
+            @Html.EJS().ComboBox("city").Placeholder("Select a state").Enabled(false).AllowCustom(false).Change("statechange").PopupHeight("auto").DataSource((IEnumerable<M_City>)ViewBag.city).Fields(new ComboBoxFieldSettings { Text = "Name", Value = "Id" }).Render()
         </div>
         <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-            @Html.EJS().TextBox("lastname").Placeholder("Last Name").Render()
+            @Html.EJS().TextBox("search").Placeholder("Search").Render()
         </div>
     </div>
 </div>
@@ -19,24 +26,39 @@
     <div class="control-section">
 
         @*@Html.EJS().Grid("DialogTemplateEdit").DataSource(ds => dsUrl(@Url.Action("ServicesDatasource", "MasterManagement")).UpdateUrl(@Url.Action("Update", "MasterManagement")).Adaptor("UrlAdaptor")).AllowSorting().ActionComplete("actionComplete").Columns(col =>*@
-        @Html.EJS().Grid("DialogTemplateEdit").DataSource(ds => ds.Url(@Url.Action("ServicesDatasource", "MasterManagement")).UpdateUrl(@Url.Action("Update", "MasterManagement")).Adaptor("UrlAdaptor")).AllowSorting().ActionComplete("actionComplete").Columns(col =>
-       {
-       col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 3 }).Add();
-       col.Field("Freight").HeaderText("Freight").Width("120").EditType("numericedit").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("OrderDate").HeaderText("Order Date").EditType("datepickeredit").Format("yMd").Width("150").Add();
-       col.Field("ShipCountry").HeaderText("Ship Country").EditType("dropdownedit").Width("150").Add();
-    }).AllowPaging().PageSettings(page => page.EnableQueryString(true)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog).Template("#dialogtemplate"); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Search" }).Render()
+        @Html.EJS().Grid("DialogTemplateEdit").DataSource(ds => ds.Url(@Url.Action("ServicesDatasource", "MasterManagement")).UpdateUrl(@Url.Action("Update", "MasterManagement")).InsertUrl(@Url.Action("Insert", "MasterManagement")).RemoveUrl(@Url.Action("Remove", "MasterManagement")).Adaptor("UrlAdaptor")).AllowSorting().ActionComplete("actionComplete").Columns(col =>
+        {
+        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+        col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 3 }).Add();
+        col.Field("Freight").HeaderText("Freight").Width("120").EditType("numericedit").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+        col.Field("OrderDate").HeaderText("Order Date").EditType("datepickeredit").Format("yMd").Width("150").Add();
+        col.Field("ShipCountry").HeaderText("Ship Country").EditType("dropdownedit").Width("150").Add();
+        }).AllowPaging().PageSettings(page => page.EnableQueryString(true)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).ShowDeleteConfirmDialog(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog).Template("#dialogtemplate"); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Search" }).Render()
     </div>
 
-    <script>
+    <script type="text/javascript">
+        function countrychange() {
+            var city = document.getElementById('city').ej2_instances[0];
+            var country = document.getElementById('country').ej2_instances[0];
+            // disable the city DropDownList
+            city.enabled = true;
+            // frame the query based on selected value in country DropDownList.
+            var tempQuery = new ej.data.Query().where('CountryXid', 'equal', country.value);
+            // set the framed query based on selected value in country DropDownList.
+            city.query = tempQuery;
+            // set null value to state DropDownList text property
+            city.text = null;
+            // bind the property changes to state DropDownList
+            city.dataBind();
+        }
+        /////////
             var columnorder;
-        document.getElementById("refresh").addEventListener("click", () => {
+            document.getElementById("refresh").addEventListener("click", () => {
             var grid = document.getElementById("DialogTemplateEdit").ej2_instances[0];
             var fn = $("#firstname").val();
             grid.query = new ej.data.Query().addParams('custom', { age: 12, name: fn, born: new Date() });
             grid.refresh();
-           
+
             debugger;
             //            $.ajax({
             //                url: "/Home/ServicesDatasource",
@@ -51,9 +73,9 @@
         });
         function complete(args) {
             if (args.requestType == "save") {
-                //Your dialog model to display the message after successful insert and edit actions 
+                //Your dialog model to display the message after successful insert and edit actions
             }
-        } 
+        }
         function actionComplete(args) {
             if (args.requestType === 'beginEdit' || args.requestType === 'add') {
                 let spinner = ej.popups.createSpinner({ target: args.dialog.element });
@@ -74,7 +96,7 @@
                         ej.popups.hideSpinner(args.dialog.element);
                     });
                     //ajax.successHandler = function (data) {
-                       
+
                     //};
                 }
                 if (args.requestType === 'add') {
@@ -102,7 +124,7 @@
                 else if (args.action === 'edit')  {
 
                 }
-                //Your dialog model to display the message after successful insert and edit actions 
+                //Your dialog model to display the message after successful insert and edit actions
             }
         }
     </script>

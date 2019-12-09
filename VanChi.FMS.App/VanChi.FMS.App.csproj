@@ -44,8 +44,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Spire.Common">
@@ -127,6 +137,9 @@
       <Private>True</Private>
       <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -202,9 +215,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Autofac.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Master\MasterAreaRegistration.cs" />
@@ -8090,6 +8105,14 @@
     <ProjectReference Include="..\VanChi.Logs\VanChi.Logs.csproj">
       <Project>{e9cc3068-9d09-4ed2-9b60-6d82faaea198}</Project>
       <Name>VanChi.Logs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VanChi.Repository.EF\VanChi.Repository.EF.csproj">
+      <Project>{ca7b5d9c-345d-410e-b9d6-5f8873fd6e3e}</Project>
+      <Name>VanChi.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VanChi.Repository.Interface\VanChi.Repository.Interface.csproj">
+      <Project>{e593eae6-6d39-4fed-96f3-b5bbdd5f7f72}</Project>
+      <Name>VanChi.Repository.Interface</Name>
     </ProjectReference>
     <ProjectReference Include="..\VanChi.Utility\VanChi.Utility.csproj">
       <Project>{c9ce25c5-8c81-4d3a-98ee-3a7072e3e9ad}</Project>

@@ -23,7 +23,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace VanChi.FMS.Web.Controllers
+namespace VanChi.FMS.App.Controllers
 {
     /// <summary>
     /// Controller cơ sở

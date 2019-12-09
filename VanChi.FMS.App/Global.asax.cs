@@ -7,6 +7,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
 using Syncfusion.Licensing;
+using AutoMapper;
+using log4net.Config;
 
 namespace VanChi.FMS.App
 {
@@ -21,6 +23,9 @@ namespace VanChi.FMS.App
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Mapper.Initialize(x => { x.AddProfile<MappingProfile>(); });
+            // Initialize log4net
+            XmlConfigurator.Configure();
         }
         public static void Register(HttpConfiguration config)
         {
