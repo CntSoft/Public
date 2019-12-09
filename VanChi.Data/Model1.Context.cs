@@ -48,5 +48,9 @@ namespace VanChi.Data
         public virtual DbSet<UserInfo> UserInfos { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<SystemSetting> SystemSettings { get; set; }
+        public virtual DbSet<M_City> M_City { get; set; }
+        public virtual DbSet<M_Country> M_Country { get; set; }
+        public virtual DbSet<M_Services> M_Services { get; set; }
+        public virtual DbSet<M_ServicesType> M_ServicesType { get; set; }
     }
 }

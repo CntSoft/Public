@@ -33,6 +33,10 @@
         <AssociationConnector Association="FMSDBModel.FK_UserRoles_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="FMSDBModel.FK_UserRoles_UserInfos" ManuallyRouted="false" />
         <EntityTypeShape EntityType="FMSDBModel.SystemSetting" Width="1.5" PointX="3.375" PointY="13.75" />
+        <EntityTypeShape EntityType="FMSDBModel.M_City" Width="1.5" PointX="5.375" PointY="13.75" />
+        <EntityTypeShape EntityType="FMSDBModel.M_Country" Width="1.5" PointX="14.375" PointY="4.75" />
+        <EntityTypeShape EntityType="FMSDBModel.M_Services" Width="1.5" PointX="14.375" PointY="7.75" />
+        <EntityTypeShape EntityType="FMSDBModel.M_ServicesType" Width="1.5" PointX="15.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

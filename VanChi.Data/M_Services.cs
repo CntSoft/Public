@@ -12,18 +12,14 @@ namespace VanChi.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class ServicesContractRate
+    public partial class M_Services
     {
         public int Id { get; set; }
-        public Nullable<int> ServicesContractId { get; set; }
-        public Nullable<int> VehicleXid { get; set; }
-        public Nullable<decimal> SellRate { get; set; }
-        public Nullable<decimal> BuyRate { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public int CountryXid { get; set; }
+        public int CityXid { get; set; }
         public System.DateTime LastEdit { get; set; }
         public int LastEditByXid { get; set; }
-        public Nullable<int> ServicesContractDateId { get; set; }
-        public Nullable<int> VehicleTypeXid { get; set; }
-        public Nullable<int> Miniutes { get; set; }
-        public Nullable<int> KiloMeter { get; set; }
     }
 }

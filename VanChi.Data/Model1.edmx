@@ -5,12 +5,43 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="FMSDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'FMSDB.dbo.M_Services' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="M_City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="CountryXid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="M_Services">
-          <Property Name="Id" Type="int" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="CountryXid" Type="int" Nullable="false" />
+          <Property Name="CityXid" Type="int" Nullable="false" />
+          <Property Name="LastEdit" Type="datetime" Nullable="false" />
+          <Property Name="LastEditByXid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_ServicesType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="M_Supplier">
           <Key>
             <PropertyRef Name="Id" />
@@ -244,12 +275,14 @@ warning 6013: The table/view 'FMSDB.dbo.M_Services' does not have a primary key 
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="ServicesContractId" Type="int" />
-          <Property Name="VehicleXid" Type="int" />
+          <Property Name="ServicesContractDateId" Type="int" />
+          <Property Name="VehicleTypeXid" Type="int" />
           <Property Name="SellRate" Type="money" />
           <Property Name="BuyRate" Type="money" />
           <Property Name="LastEdit" Type="datetime" Nullable="false" />
           <Property Name="LastEditByXid" Type="int" Nullable="false" />
+          <Property Name="Miniutes" Type="int" />
+          <Property Name="KiloMeter" Type="int" />
         </EntityType>
         <EntityType Name="SystemLogs">
           <Key>
@@ -366,6 +399,10 @@ warning 6013: The table/view 'FMSDB.dbo.M_Services' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="FMSDBModelStoreContainer">
+          <EntitySet Name="M_City" EntityType="Self.M_City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Country" EntityType="Self.M_Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_Services" EntityType="Self.M_Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_ServicesType" EntityType="Self.M_ServicesType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Supplier" EntityType="Self.M_Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_SupplierVehicle" EntityType="Self.M_SupplierVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="M_Vehicle" EntityType="Self.M_Vehicle" Schema="dbo" store:Type="Tables" />
@@ -659,6 +696,10 @@ warning 6013: The table/view 'FMSDB.dbo.M_Services' does not have a primary key 
           <Property Name="BuyRate" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="LastEdit" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="LastEditByXid" Type="Int32" Nullable="false" />
+          <Property Name="ServicesContractDateId" Type="Int32" />
+          <Property Name="VehicleTypeXid" Type="Int32" />
+          <Property Name="Miniutes" Type="Int32" />
+          <Property Name="KiloMeter" Type="Int32" />
         </EntityType>
         <EntityType Name="SystemLog">
           <Key>
@@ -815,6 +856,10 @@ warning 6013: The table/view 'FMSDB.dbo.M_Services' does not have a primary key 
             <End Role="UserRoles" EntitySet="UserRoles" />
           </AssociationSet>
           <EntitySet Name="SystemSettings" EntityType="FMSDBModel.SystemSetting" />
+          <EntitySet Name="M_City" EntityType="FMSDBModel.M_City" />
+          <EntitySet Name="M_Country" EntityType="FMSDBModel.M_Country" />
+          <EntitySet Name="M_Services" EntityType="FMSDBModel.M_Services" />
+          <EntitySet Name="M_ServicesType" EntityType="FMSDBModel.M_ServicesType" />
         </EntityContainer>
         <EntityType Name="SystemSetting">
           <Key>
@@ -822,6 +867,43 @@ warning 6013: The table/view 'FMSDB.dbo.M_Services' does not have a primary key 
           </Key>
           <Property Name="SettingId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CountryXid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_Services">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CountryXid" Type="Int32" Nullable="false" />
+          <Property Name="CityXid" Type="Int32" Nullable="false" />
+          <Property Name="LastEdit" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastEditByXid" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="M_ServicesType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1078,9 +1160,11 @@ warning 6013: The table/view 'FMSDB.dbo.M_Services' does not have a primary key 
           <EntitySetMapping Name="ServicesContractRates">
             <EntityTypeMapping TypeName="FMSDBModel.ServicesContractRate">
               <MappingFragment StoreEntitySet="ServicesContractRates">
+                <ScalarProperty Name="KiloMeter" ColumnName="KiloMeter" />
+                <ScalarProperty Name="Miniutes" ColumnName="Miniutes" />
+                <ScalarProperty Name="VehicleTypeXid" ColumnName="VehicleTypeXid" />
+                <ScalarProperty Name="ServicesContractDateId" ColumnName="ServicesContractDateId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ServicesContractId" ColumnName="ServicesContractId" />
-                <ScalarProperty Name="VehicleXid" ColumnName="VehicleXid" />
                 <ScalarProperty Name="SellRate" ColumnName="SellRate" />
                 <ScalarProperty Name="BuyRate" ColumnName="BuyRate" />
                 <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
@@ -1143,6 +1227,47 @@ warning 6013: The table/view 'FMSDB.dbo.M_Services' does not have a primary key 
               <MappingFragment StoreEntitySet="SystemSetting">
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_City">
+            <EntityTypeMapping TypeName="FMSDBModel.M_City">
+              <MappingFragment StoreEntitySet="M_City">
+                <ScalarProperty Name="CountryXid" ColumnName="CountryXid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Country">
+            <EntityTypeMapping TypeName="FMSDBModel.M_Country">
+              <MappingFragment StoreEntitySet="M_Country">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_Services">
+            <EntityTypeMapping TypeName="FMSDBModel.M_Services">
+              <MappingFragment StoreEntitySet="M_Services">
+                <ScalarProperty Name="LastEditByXid" ColumnName="LastEditByXid" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="CityXid" ColumnName="CityXid" />
+                <ScalarProperty Name="CountryXid" ColumnName="CountryXid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_ServicesType">
+            <EntityTypeMapping TypeName="FMSDBModel.M_ServicesType">
+              <MappingFragment StoreEntitySet="M_ServicesType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
