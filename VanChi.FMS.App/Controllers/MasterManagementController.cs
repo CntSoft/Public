@@ -29,8 +29,8 @@ namespace VanChi.FMS.App.Controllers
         #region Services
         public ActionResult Services()
         {
-            ViewBag.country = this.Business.Shared_GetItems<CountryDTO,M_Country>();
-            ViewBag.city = this.Business.Shared_GetItems<CityDTO, M_City>();
+            ViewBag.country = this.Business.Shared_GetItems<CountryDTO,M_Country>().ToArray();
+            ViewBag.city = this.Business.Shared_GetItems<CityDTO, M_City>().ToArray();
             return View();
         }
         public ActionResult UrlAdaptor()

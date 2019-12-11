@@ -129,12 +129,6 @@
     <Compile Include="ServicesContract.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServicesContractDate.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ServicesContractRate.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="SystemLog.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

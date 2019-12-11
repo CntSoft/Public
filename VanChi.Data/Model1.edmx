@@ -257,33 +257,6 @@
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="SupplierId" Type="int" />
         </EntityType>
-        <EntityType Name="ServicesContractDates">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="ServicesContractId" Type="int" />
-          <Property Name="FromDate" Type="datetime" />
-          <Property Name="ToDate" Type="datetime" />
-          <Property Name="LastEdit" Type="datetime" />
-          <Property Name="LastEditByXid" Type="nchar" MaxLength="10" />
-          <Property Name="Comments" Type="nvarchar" MaxLength="500" />
-        </EntityType>
-        <EntityType Name="ServicesContractRates">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="ServicesContractDateId" Type="int" />
-          <Property Name="VehicleTypeXid" Type="int" />
-          <Property Name="SellRate" Type="money" />
-          <Property Name="BuyRate" Type="money" />
-          <Property Name="LastEdit" Type="datetime" Nullable="false" />
-          <Property Name="LastEditByXid" Type="int" Nullable="false" />
-          <Property Name="Miniutes" Type="int" />
-          <Property Name="KiloMeter" Type="int" />
-        </EntityType>
         <EntityType Name="SystemLogs">
           <Key>
             <PropertyRef Name="LogId" />
@@ -420,8 +393,6 @@
           <EntitySet Name="Resources" EntityType="Self.Resources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServicesContract" EntityType="Self.ServicesContract" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ServicesContractDates" EntityType="Self.ServicesContractDates" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ServicesContractRates" EntityType="Self.ServicesContractRates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SystemLogs" EntityType="Self.SystemLogs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SystemSetting" EntityType="Self.SystemSetting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfos" EntityType="Self.UserInfos" Schema="dbo" store:Type="Tables" />
@@ -672,35 +643,6 @@
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="SupplierId" Type="Int32" />
         </EntityType>
-        <EntityType Name="ServicesContractDate">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ServicesContractId" Type="Int32" />
-          <Property Name="FromDate" Type="DateTime" Precision="3" />
-          <Property Name="ToDate" Type="DateTime" Precision="3" />
-          <Property Name="LastEdit" Type="DateTime" Precision="3" />
-          <Property Name="LastEditByXid" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="ServicesContractRate">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="ServicesContractId" Type="Int32" />
-          <Property Name="VehicleXid" Type="Int32" />
-          <Property Name="SellRate" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="BuyRate" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="LastEdit" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastEditByXid" Type="Int32" Nullable="false" />
-          <Property Name="ServicesContractDateId" Type="Int32" />
-          <Property Name="VehicleTypeXid" Type="Int32" />
-          <Property Name="Miniutes" Type="Int32" />
-          <Property Name="KiloMeter" Type="Int32" />
-        </EntityType>
         <EntityType Name="SystemLog">
           <Key>
             <PropertyRef Name="LogId" />
@@ -830,8 +772,6 @@
           <EntitySet Name="Resources" EntityType="Self.Resource" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="ServicesContracts" EntityType="Self.ServicesContract" />
-          <EntitySet Name="ServicesContractDates" EntityType="Self.ServicesContractDate" />
-          <EntitySet Name="ServicesContractRates" EntityType="Self.ServicesContractRate" />
           <EntitySet Name="SystemLogs" EntityType="Self.SystemLog" />
           <EntitySet Name="UserInfos" EntityType="Self.UserInfo" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
@@ -1140,35 +1080,6 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ServicesContractDates">
-            <EntityTypeMapping TypeName="FMSDBModel.ServicesContractDate">
-              <MappingFragment StoreEntitySet="ServicesContractDates">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ServicesContractId" ColumnName="ServicesContractId" />
-                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
-                <ScalarProperty Name="LastEditByXid" ColumnName="LastEditByXid" />
-                <ScalarProperty Name="Comments" ColumnName="Comments" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ServicesContractRates">
-            <EntityTypeMapping TypeName="FMSDBModel.ServicesContractRate">
-              <MappingFragment StoreEntitySet="ServicesContractRates">
-                <ScalarProperty Name="KiloMeter" ColumnName="KiloMeter" />
-                <ScalarProperty Name="Miniutes" ColumnName="Miniutes" />
-                <ScalarProperty Name="VehicleTypeXid" ColumnName="VehicleTypeXid" />
-                <ScalarProperty Name="ServicesContractDateId" ColumnName="ServicesContractDateId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="SellRate" ColumnName="SellRate" />
-                <ScalarProperty Name="BuyRate" ColumnName="BuyRate" />
-                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
-                <ScalarProperty Name="LastEditByXid" ColumnName="LastEditByXid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

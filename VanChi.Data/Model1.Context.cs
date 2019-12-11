@@ -42,8 +42,6 @@ namespace VanChi.Data
         public virtual DbSet<Resource> Resources { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<ServicesContract> ServicesContracts { get; set; }
-        public virtual DbSet<ServicesContractDate> ServicesContractDates { get; set; }
-        public virtual DbSet<ServicesContractRate> ServicesContractRates { get; set; }
         public virtual DbSet<SystemLog> SystemLogs { get; set; }
         public virtual DbSet<UserInfo> UserInfos { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
