@@ -224,6 +224,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Master\MasterAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AutoCompleteController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -8050,6 +8051,7 @@
     <Content Include="Views\MasterManagement\_DialogEditpartial.cshtml" />
     <Content Include="Views\MasterManagement\Index.cshtml" />
     <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\AutoComplete\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DataGrid\DataGridFeatures.cshtml" />

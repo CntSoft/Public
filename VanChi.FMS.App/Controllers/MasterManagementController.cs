@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Web;
-using System.Web.Http;
+//using System.Web.Http;
 using System.Web.Mvc;
 using VanChi.Business.DTO;
 using VanChi.Business.Interface;
@@ -37,8 +37,10 @@ namespace VanChi.FMS.App.Controllers
         {
             return View();
         }
+        [Route("masterServices")]
         public ActionResult ServicesDatasource(SearchAdvancedFilterDto dm)
         {
+            string start = Request.QueryString["page"];
             IEnumerable DataSource = Orders.GetAllRecords();
             DataOperations operation = new DataOperations();
             List<string> str = new List<string>();
@@ -88,7 +90,7 @@ namespace VanChi.FMS.App.Controllers
         {
             return Json(new { data = value, message = "msg" }, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Remove([FromBody]CRUDModel<Orders> Value)
+        public ActionResult Remove([System.Web.Http.FromBody]CRUDModel<Orders> Value)
         {
            return Json(Value.Value);
         }

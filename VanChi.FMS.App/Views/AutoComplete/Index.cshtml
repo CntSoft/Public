@@ -1,0 +1,15 @@
+﻿@Html.EJS().AutoComplete("games").Placeholder("Select a Country").PopupHeight("200px").DataSource(dataManger =>
+    dataManger.Url("/AutoComplete/UrlDatasource").Adaptor("UrlAdaptor").CrossDomain(true)).Fields(new Syncfusion.EJ2.DropDowns.AutoCompleteFieldSettings
+    {
+        Value = "ShipCountry"
+    }).Render()
+<script>
+    ej.base.L10n.load({
+        'fr-BE': {
+            'dropdowns': {
+                'noRecordsTemplate': "Aucun enregistrement trouvé",
+                'actionFailureTemplate': "Modèle d'échec d'action"
+            }
+        }
+    });
+</script>

@@ -134,6 +134,7 @@ namespace VanChi.FMS.App.Models
     public class SearchAdvancedFilterDto : DataManagerRequest
     {
         public CustomFilter Custom { get; set; }
+        public int? page { get; set; }
     }
 
     public class CustomFilter
