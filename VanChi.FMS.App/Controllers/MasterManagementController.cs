@@ -4,9 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 //using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Routing;
 using VanChi.Business.DTO;
 using VanChi.Business.Interface;
 using VanChi.Data;
@@ -38,9 +40,9 @@ namespace VanChi.FMS.App.Controllers
             return View();
         }
         [Route("masterServices")]
-        public ActionResult ServicesDatasource(SearchAdvancedFilterDto dm)
+        public ActionResult ServicesDatasource(SearchAdvancedFilterDto dm,string page)
         {
-            string start = Request.QueryString["page"];
+                string start = Request.QueryString["page"];
             IEnumerable DataSource = Orders.GetAllRecords();
             DataOperations operation = new DataOperations();
             List<string> str = new List<string>();
