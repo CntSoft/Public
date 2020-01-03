@@ -230,6 +230,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MasterManagementController.cs" />
     <Compile Include="Controllers\ServiceContractController.cs" />
+    <Compile Include="Controllers\TreeViewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ServicesModel.cs" />
+    <Compile Include="Models\TreeviewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -8052,6 +8054,9 @@
     <Content Include="Views\MasterManagement\Index.cshtml" />
     <Content Include="Views\Shared\_Notifications.cshtml" />
     <Content Include="Views\AutoComplete\Index.cshtml" />
+    <Content Include="Views\TreeView\DefaultFunctionalities.cshtml" />
+    <Content Include="Views\TreeView\Index.cshtml" />
+    <Content Include="Views\TreeView\NodeEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DataGrid\DataGridFeatures.cshtml" />

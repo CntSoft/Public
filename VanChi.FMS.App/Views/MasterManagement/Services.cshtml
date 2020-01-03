@@ -23,20 +23,25 @@
 </div>
 @section ControlsSection{
     @Html.EJS().Button("refresh").Content("Refresh").Render()
-    <div class="control-section">
+<div class="control-section">
 
-        @*@Html.EJS().Grid("DialogTemplateEdit").DataSource(ds => dsUrl(@Url.Action("ServicesDatasource", "MasterManagement")).UpdateUrl(@Url.Action("Update", "MasterManagement")).Adaptor("UrlAdaptor")).AllowSorting().ActionComplete("actionComplete").Columns(col =>*@
-        @Html.EJS().Grid("DialogTemplateEdit").DataSource(ds => ds.Url(@Url.Action("ServicesDatasource", "MasterManagement")).UpdateUrl(@Url.Action("Update", "MasterManagement")).InsertUrl(@Url.Action("Insert", "MasterManagement")).RemoveUrl(@Url.Action("Remove", "MasterManagement")).Adaptor("UrlAdaptor")).AllowSorting().ActionComplete("actionComplete").Columns(col =>
-   {
-       col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 3 }).Add();
-       col.Field("Freight").HeaderText("Freight").Width("120").EditType("numericedit").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("OrderDate").HeaderText("Order Date").EditType("datepickeredit").Format("yMd").Width("150").Add();
-       col.Field("ShipCountry").HeaderText("Ship Country").EditType("dropdownedit").Width("150").Add();
-   }).AllowPaging(true).PageSettings(page => page.EnableQueryString(true).PageSize(20)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).ShowDeleteConfirmDialog(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog).Template("#dialogtemplate"); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Search" }).Created("created").Render()
-    </div>
+    @*@Html.EJS().Grid("DialogTemplateEdit").DataSource(ds => dsUrl(@Url.Action("ServicesDatasource", "MasterManagement")).UpdateUrl(@Url.Action("Update", "MasterManagement")).Adaptor("UrlAdaptor")).AllowSorting().ActionComplete("actionComplete").Columns(col =>*@
+    @Html.EJS().Grid("DialogTemplateEdit").DataSource(ds => ds.Url(@Url.Action("ServicesDatasource", "MasterManagement")).UpdateUrl(@Url.Action("Update", "MasterManagement")).InsertUrl(@Url.Action("Insert", "MasterManagement")).RemoveUrl(@Url.Action("Remove", "MasterManagement")).Adaptor("UrlAdaptor")).AllowSorting().ActionComplete("actionComplete").Columns(col =>
+    @*@Html.EJS().Grid("DialogTemplateEdit").DataSource(ds => ds.UpdateUrl(@Url.Action("Update", "MasterManagement")).InsertUrl(@Url.Action("Insert", "MasterManagement")).RemoveUrl(@Url.Action("Remove", "MasterManagement")).Adaptor("UrlAdaptor")).AllowSorting().ActionComplete("actionComplete").Columns(col =>*@
+       {
+      col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+      col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 3 }).Add();
+      col.Field("Freight").HeaderText("Freight").Width("120").EditType("numericedit").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+      col.Field("OrderDate").HeaderText("Order Date").EditType("datepickeredit").Format("yMd").Width("150").Add();
+      col.Field("ShipCountry").HeaderText("Ship Country").EditType("dropdownedit").Width("150").Add();
+  }).AllowPaging(true).PageSettings(page => page.EnableQueryString(true).PageSize(20)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).ShowDeleteConfirmDialog(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog).Template("#dialogtemplate"); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Search" }).Render()
+</div>
 
     <script type="text/javascript">
+        function begin(args) {
+            args.model.query.addParams("page", 10248);
+
+        }
         function countrychange() {
             var city = document.getElementById('city').ej2_instances[0];
             var country = document.getElementById('country').ej2_instances[0];
@@ -77,6 +82,11 @@
             }
         }
         function created(args) {
+            alert("");
+            var grid = document.getElementById("DialogTemplateEdit").ej2_instances[0];
+            var fn = $("#firstname").val();
+            grid.query = new ej.data.Query().addParams('custom', { age: 12, name: fn, born: new Date() });
+            grid.refresh();
         }
         function actionComplete(args) {
             if (args.requestType === 'beginEdit' || args.requestType === 'add') {

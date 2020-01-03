@@ -1,0 +1,137 @@
+﻿@using Syncfusion.EJ2.Navigations
+@using Syncfusion.EJ2
+<div class="col-lg-12 control-section">
+    @Html.EJS().TreeView("treedata").Fields(ViewBag.fields).Render()
+    <ejs-contextmenu id="menu" target="#treedata" items="ViewBag.menuItems" select="menuClick" beforeOpen="beforeOpen"></ejs-contextmenu>
+</div>
+@*<script>
+    var index = 1;
+    function menuClick(args) {
+        var treeObj = document.getElementById('treedata').ej2_instances[0];
+        var menuObj = document.getElementById('menu').ej2_instances[0];
+        var targetNodeId = treeObj.selectedNodes[0];//Parent
+        //var object = [{ id: "1", name: "node" }];
+        //var child = treeObj.element.querySelector('[data-uid="5"]');
+        //var parent = child.parentElement.closest('.e-list-item');
+        //var level = parseInt(parent.getAttribute('aria-level')) + 1;
+        //var childNodes = Array.from(parent.querySelectorAll('.e-list-item.e-level-' + level))
+        //var index = childNodes.indexOf(child)
+        //treeObj.addNodes(object, "book", index + 1);
+        if (args.item.text == "Add New Item") {
+            var nodeId = "tree_" + index;
+            var item = { id: nodeId, name: "New Folder" };
+            treeObj.addNodes([item], "5", 1, null);
+            index++;
+            treeObj.fields.dataSource.push(item);
+            treeObj.beginEdit(nodeId);
+        }
+        else if (args.item.text == "Remove Item") {
+            treeObj.removeNodes([targetNodeId]);
+        }
+        else if (args.item.text == "Rename Item") {
+            treeObj.beginEdit(targetNodeId);
+        }
+    }
+    function beforeOpen(args) {
+        var treeObj = document.getElementById('treedata').ej2_instances[0];
+        var menuObj = document.getElementById('menu').ej2_instances[0];
+        var targetNodeId = treeObj.selectedNodes[0];
+        var targetNode = document.getElementById('treedata').querySelector('[data-uid="' + targetNodeId + '"]');
+        if (targetNode.classList.contains('remove')) {
+            menuObj.enableItems(['Remove Item'], false);
+        }
+        else {
+            menuObj.enableItems(['Remove Item'], true);
+        }
+        if (targetNode.classList.contains('rename')) {
+            menuObj.enableItems(['Rename Item'], false);
+        }
+        else {
+            menuObj.enableItems(['Rename Item'], true);
+        }
+    }
+    function onNodeEdited(args) {
+        var treeObj = document.getElementById('treedata').ej2_instances[0];
+        var displayContent = "";
+        if (args.newText.trim() == "") {
+            args.cancel = true;
+            displayContent = "TreeView item text should not be empty";
+        }
+        else if (args.newText != args.oldText) {
+            displayContent = "TreeView item text edited successfully";
+        } else {
+            displayContent = "";
+        }
+    }
+</script>*@
+@*<script>
+        var index = 1;
+        function menuClick(args) {
+            var treeObj = document.getElementById('treedata').ej2_instances[0];
+            var menuObj = document.getElementById('menu').ej2_instances[0];
+            var targetNodeId = treeObj.selectedNodes[0];
+            var idParent = treeObj.rootData[0].id;
+            debugger;
+            if (args.item.text == "Add New Item") {
+                var nodeId = "tree_" + index;
+                //var item = { id: nodeId, name: "New Folder" };
+                var item = { id: 3, pid: 5, name: "New Folder" }
+                treeObj.addNodes([item], 5, 5, null);
+                index++;
+                treeObj.fields.dataSource.push(item);
+                treeObj.beginEdit(nodeId);
+                var aa = [
+                    {
+                        'id': 5, 'name': 'Discover Music', 'hasChild': true, 'expanded': true, 'htmlAttribute': { 'class': 'remove rename' }
+                    }
+                        ,{'id': 5, 'name': 'Discover Music', 'hasChild': true, 'expanded': true, 'htmlAttribute': { 'class': 'remove rename' }}
+            ,{'id': 5, 'name': 'Discover Music', 'hasChild': true, 'expanded': true, 'htmlAttribute': { 'class': 'remove rename' }
+        }
+        ,{'id': 5, 'name': 'Discover Music', 'hasChild': true, 'expanded': true, 'htmlAttribute': { 'class': 'remove rename' }}
+        ,{'id': 5, 'name': 'Discover Music', 'hasChild': true, 'expanded': true, 'htmlAttribute': { 'class': 'remove rename' }}
+        ,{'id': 5, 'name': 'Discover Music', 'hasChild': true, 'expanded': true, 'htmlAttribute': { 'class': 'remove rename' }}
+        ,{'id': 5, 'name': 'Discover Music', 'hasChild': true, 'expanded': true, 'htmlAttribute': { 'class': 'remove rename' }}
+        ,{'id': 5, 'name': 'Discover Music', 'hasChild': true, 'expanded': true, 'htmlAttribute': { 'class': 'remove rename' }}
+                , { 'id': 6, 'pid': 5, 'name': 'Hot Singles' }, { 'id': 4, 'pid': 5, 'name': 'Live Music' }, { 'id': 7, 'pid': 5, 'name': 'Rising Artists' }];
+                //treeObj.fields.dataSource = aa;
+            }
+            else if (args.item.text == "Remove Item") {
+                treeObj.removeNodes([targetNodeId]);
+            }
+            else if (args.item.text == "Rename Item") {
+                treeObj.beginEdit(targetNodeId);
+            }
+        }
+        function beforeOpen(args) {
+            var treeObj = document.getElementById('treedata').ej2_instances[0];
+            var menuObj = document.getElementById('menu').ej2_instances[0];
+            var targetNodeId = treeObj.selectedNodes[0];
+            var targetNode = document.getElementById('treedata').querySelector('[data-uid="' + targetNodeId + '"]');
+            if (targetNode.classList.contains('remove')) {
+                menuObj.enableItems(['Remove Item'], false);
+            }
+            else {
+                 menuObj.enableItems(['Remove Item'], true);
+            }
+            if (targetNode.classList.contains('rename')) {
+                menuObj.enableItems(['Rename Item'], false);
+            }
+            else {
+                menuObj.enableItems(['Rename Item'], true);
+            }
+        }
+        function onNodeEdited(args) {
+            var treeObj = document.getElementById('treedata').ej2_instances[0];
+            var displayContent = "";
+            if (args.newText.trim() == "") {
+                args.cancel = true;
+                displayContent = "TreeView item text should not be empty";
+            }
+            else if (args.newText != args.oldText) {
+                displayContent = "TreeView item text edited successfully";
+            } else {
+                displayContent = "";
+            }
+            //debugger;
+        }
+    </script>*@
