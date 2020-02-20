@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("VanChi.FMS")]
+[assembly: AssemblyTitle("VanChi.FMS.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VanChi.FMS")]
+[assembly: AssemblyProduct("VanChi.FMS.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f4687fc3-8cc4-4bae-896e-ddc3a8ab6944")]
+[assembly: Guid("fb8e9c3d-7643-4f57-ae40-88a3b997bbe7")]
 
 // Version information for an assembly consists of the following four values:
 //
