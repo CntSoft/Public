@@ -31,6 +31,7 @@ namespace VanChi.FMS
             RegisterExamples(bundles);
 
             RegisterDocumentation(bundles);
+            RegisterMaster(bundles);
         }
 
         private static void RegisterDocumentation(BundleCollection bundles)
@@ -227,6 +228,11 @@ namespace VanChi.FMS
         {
             bundles.Add(new ScriptBundle("~/Scripts/Shared/_Layout").Include(
                 "~/Scripts/Shared/_Layout.js"));
+        }
+        private static void RegisterMaster(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/Scripts/Master/ServiceContractManager/menu").Include(
+                "~/Scripts/Master/ServiceContractManager-menu.js"));
         }
 
         private static void RegisterLayout(BundleCollection bundles)
