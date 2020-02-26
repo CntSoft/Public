@@ -181,6 +181,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MailboxController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Controllers\ServiceContractManagerController.cs" />
     <Compile Include="Controllers\TablesController.cs" />
     <Compile Include="Controllers\WidgetsController.cs" />
     <Compile Include="Extensions\ClaimsExtensions.cs" />
@@ -1134,6 +1136,7 @@
     <Content Include="Scripts\Mailbox\Inbox-menu.js" />
     <Content Include="Scripts\Mailbox\Inbox.js" />
     <Content Include="Scripts\Mailbox\Read-menu.js" />
+    <Content Include="Scripts\Master\ServiceContractManager-menu.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -1214,6 +1217,8 @@
     <Content Include="Views\Tables\Data.cshtml" />
     <Content Include="Views\Tables\Simple.cshtml" />
     <Content Include="Views\Widgets\Index.cshtml" />
+    <Content Include="Views\ServiceContractManager\Index.cshtml" />
+    <Content Include="Views\Master\ServiceContractManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
