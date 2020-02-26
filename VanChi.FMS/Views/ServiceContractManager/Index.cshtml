@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@section vcButton {
+    <section class="content-header">
+        @*@ViewBag.Title
+            <small>@ViewBag.SubTitle</small>*@
+        <div class="pull-left">
+            <a href="@Url.Action("Create")" class="btn btn-primary"><i class="fa fa-plus-square"></i> Add New</a>
+            <button type="button" name="importexcel" onclick="ImportProduct()" class="btn btn-primary">
+                <i class="fa fa-upload"></i>
+                Import
+            </button>
+            <a type="button" class="btn btn-primary" href="@Url.Action("ExportXlsx")">
+                <i class="fa fa-download"></i>
+                Export
+            </a>
+            <button type="button" name="importimage" onclick="ImportImage()" class="btn btn-primary">
+                <i class="fa fa-upload"></i>
+                Import Image
+            </button>
+        </div>
+
+    </section>
+}

@@ -249,6 +249,14 @@
                             <li id="left-sidebar-menu-dashboard-dashboardV2"><a href="@Url.Action("DashboardV2", "Home")"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
                         </ul>
                     </li>
+                    <li id="left-sidebar-menu-master" class="treeview">
+                        <a href="#">
+                            <i class="fa fa-edit"></i> <span>Master</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="left-sidebar-menu-master-servicecontractmanager"><a href="@Url.Action("ServiceContractManager", "Master")"><i class="fa fa-circle-o"></i> Service contract</a></li>
+                        </ul>
+                    </li>
                     <li id="left-sidebar-menu-widgets">
                         <a href="@Url.Action("Index", "Widgets")">
                             <i class="fa fa-th"></i> <span>Widgets</span>
@@ -376,16 +384,7 @@
             </section>
         </aside>
         <div class="content-wrapper">
-            <section class="content-header">
-                <h1>
-                    @ViewBag.Title
-                    <small>@ViewBag.SubTitle</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i>@ViewBag.SubTitle</a></li>
-                    <li class="active">@ViewBag.Title</li>
-                </ol>
-            </section>
+                @RenderSection("button", required: false)
             <section class="content">
                 @RenderBody()
             </section>
