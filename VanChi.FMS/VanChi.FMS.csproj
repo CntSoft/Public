@@ -172,6 +172,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChartsController.cs" />
     <Compile Include="Controllers\DocumentationController.cs" />
@@ -1219,9 +1220,11 @@
     <Content Include="Views\Widgets\Index.cshtml" />
     <Content Include="Views\ServiceContractManager\Index.cshtml" />
     <Content Include="Views\Master\ServiceContractManager.cshtml" />
+    <Content Include="Views\Master\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -1235,6 +1238,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VanChi.Business.Interface\VanChi.Business.Interface.csproj">
+      <Project>{7326EFA9-B1CF-432A-BF1E-CEAE11977C79}</Project>
+      <Name>VanChi.Business.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VanChi.Logs\VanChi.Logs.csproj">
+      <Project>{E9CC3068-9D09-4ED2-9B60-6D82FAAEA198}</Project>
+      <Name>VanChi.Logs</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
