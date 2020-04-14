@@ -1,0 +1,51 @@
+﻿@*<div class="example-modal">
+        <div class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Default Modal</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>One fine body&hellip;</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<div class="popup-body">
+    <div class="row row-filter">
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" id="txtSearch" class="form-control" placeholder="Find category" />
+                    <span class="input-group-btn">
+                        <button class="btn green" type="button" id="PopUpCategory_Search" onclick="PopUpCategory.SearchCategory();"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group" id="tableCategory">
+
+    </div>
+</div>
+<div class="popup-footer">
+    <div class="text-right">
+        <button class="btn btn-primary" type="button" id="PopUpProduct_Save" onclick="PopUpProduct.save(this);">
+            <span class="fa fa-save"></span>
+            Select
+        </button>
+        <button class="btn btn-primary" type="button" id="PopUpProduct_Close" onclick="PopUpProduct.close(this);">
+            <span class="fa fa-close"></span>
+            Close
+        </button>
+    </div>
+</div>

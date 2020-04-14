@@ -1,0 +1,192 @@
+﻿
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Đất nước</label>
+                            <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected">Việt nam</option>
+                                <option></option>
+                                <option>Việt nam</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Thành phố</label>
+                            <select class="form-control select2" style="width: 100%;">
+                                <option selected="selected">Hồ chí minh</option>
+                                <option></option>
+                                <option>Hồ chí minh</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Tên dịch vụ</label>
+                            <input type="text" class="form-control" id="Name" placeholder="Nhập tên dịch vụ">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label>Mã ký hiệu</label>
+                            <input type="text" class="form-control" id="<Code></Code>" placeholder="Ví dụ 2D1N">
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-1 col-sm-1">
+                            <button id="btnEditSupplier" type="button" class="btn btn-block btn-default btn-xs">Chọn supplier</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <table id="serviceName" class="table table-bordered table-striped table-condensed cf">
+                                <thead class="cf">
+                                    <tr>
+                                        <th>
+                                            Tên nhà cung cấp
+                                        </th>
+                                        <th>
+                                            Số điện thoại
+                                        </th>
+                                        <th>
+                                            Địa chỉ liên hệ
+                                        </th>
+                                        <th>
+
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableCategorys">
+                                    <tr class="CategoryRow">
+                                        <td>
+                                            Service Name 1
+                                        </td>
+                                        <td>
+                                            Suppler
+                                        </td>
+                                        <td>
+                                            Service Type
+                                        </td>
+                                        <td>
+                                            <a href="">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <tr class="CategoryRow">
+                                        <td>
+                                            Service Name 2
+                                        </td>
+                                        <td>
+                                            Suppler
+                                        </td>
+                                        <td>
+                                            Service Type
+                                        </td>
+                                        <td>
+                                            <a href="">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <tr class="CategoryRow">
+                                        <td>
+                                            Service Name 3
+                                        </td>
+                                        <td>
+                                            Suppler
+                                        </td>
+                                        <td>
+                                            Service Type
+                                        </td>
+                                        <td>
+                                            <a href="">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <tr class="CategoryRow">
+                                        <td>
+                                            Service Name 5
+                                        </td>
+                                        <td>
+                                            Suppler
+                                        </td>
+                                        <td>
+                                            Service Type
+                                        </td>
+                                        <td>
+                                            <a href="">Delete</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    var height = $(window).height();
+    var width = $(window).width();
+    $("#btnEditSupplier").click(function () {
+        var options = {
+            url: '@Url.Action("AddSupplier", "Master")',
+            width: width > 768 ? 800 : width,
+            height: height > 468 ? 600 : height,
+            title: 'Chọn nhà cung cấp',
+
+        }
+        vanchi_js_modaldialog.showDialog(options, function (returnValue) {
+            //if (!isNullOrEmpty(returnValue)) {
+            //    for (var i = 0; i < returnValue.length; i++) {
+            //        if (!validateDuplicateRow(returnValue[i].CategoryKey)) {
+            //            var html = HTMLDetailRow(returnValue[i].ProductCategoryKey, returnValue[i].CategoryKey, returnValue[i].CategoryId, returnValue[i].CategoryName, returnValue[i].IsActive)
+            //            //$(html).insertBefore($('#tableProductCategoryDetails:last'));
+            //            $('#tableProductCategoryDetails:last').append(html);
+            //            var $Row = $('.ProductCategoryDetailRow:last');
+            //        }
+            //    }
+
+            //}
+        });
+    });
+    function HTMLDetailRow(ProductCategoryKey, categorykey,categoryId, CategoryName,IsActive) {
+        var html = "<tr class='ProductCategoryDetailRow' productcategorykey='0' categorykey='" + categorykey + "'><td>" + categoryId + "</td><td>" + CategoryName + "</td><td>" + IsActive + "</td><td>"
+                                       + "<a href='#' onclick='removeCategoryDetailRow(this)'>delete</a></td></tr>";
+        return html;
+    }
+    function removeCategoryDetailRow(control)
+    {
+        var valid = confirm('Do you want delete ?');
+        if (valid) {
+            var $RowDelete = $(control).closest('tr');
+            $RowDelete.remove();
+        }
+    }
+    function validateDuplicateRow(categoryId) {
+        var isvaild = false;
+        var $RowArray = $('.ProductCategoryDetailRow');
+        $.each($RowArray, function (index) {
+            var $Row = $(this);
+            var categoryKeyTemp = $Row.attr("CategoryKey");
+            if (categoryId == categoryKeyTemp) {
+                isvaild = true;
+            }
+        });
+        return isvaild;
+    }
+</script>

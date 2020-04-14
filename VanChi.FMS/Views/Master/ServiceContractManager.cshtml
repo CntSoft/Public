@@ -30,23 +30,35 @@
 
     </section>
 }
-    <div class="row">
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="input-group input-group-sm">
-                    <input type="text" class="form-control">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-info btn-flat">Go!</button>
-                    </span>
-                </div>
+<style>
+    td {
+        border: 1px #DDD solid;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .selected {
+        background-color: #3c8dbc !important;
+        color: #FFF !important;
+    }
+</style>
+<div class="row">
+    <div class="box box-primary">
+        <div class="box-body">
+            <div class="input-group input-group-sm">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-info btn-flat">Go!</button>
+                </span>
             </div>
         </div>
     </div>
+</div>
 <div class="row">
     <div class="col-md-7">
         <div class="box box-primary">
             <div class="scroll-columns">
-                <table class="table table-bordered table-striped table-condensed cf">
+                <table id="serviceName" class="table table-bordered table-striped table-condensed cf">
                     <thead class="cf">
                         <tr>
                             <th>
@@ -63,7 +75,40 @@
                     <tbody id="tableCategorys">
                         <tr class="CategoryRow">
                             <td>
-                                Service Name
+                                Service Name 1
+                            </td>
+                            <td>
+                                Suppler
+                            </td>
+                            <td>
+                                Service Type
+                            </td>
+                        </tr>
+                        <tr class="CategoryRow">
+                            <td>
+                                Service Name 2
+                            </td>
+                            <td>
+                                Suppler
+                            </td>
+                            <td>
+                                Service Type
+                            </td>
+                        </tr>
+                        <tr class="CategoryRow">
+                            <td>
+                                Service Name 3
+                            </td>
+                            <td>
+                                Suppler
+                            </td>
+                            <td>
+                                Service Type
+                            </td>
+                        </tr>
+                        <tr class="CategoryRow">
+                            <td>
+                                Service Name 5
                             </td>
                             <td>
                                 Suppler
@@ -80,7 +125,7 @@
     <div class="col-md-5">
         <div class="box box-primary">
             <div class="scroll-columns">
-                <table class="table table-bordered table-striped table-condensed cf">
+                <table id="serviceDate" class="table table-bordered table-striped table-condensed cf">
                     <thead class="cf">
                         <tr>
                             <th>
@@ -97,7 +142,7 @@
                     <tbody id="tableCategorys">
                         <tr class="CategoryRow">
                             <td>
-                                từ ngày 
+                                từ ngày
                             </td>
                             <td>
                                 đến ngày
@@ -106,13 +151,46 @@
                                 ghi chú
                             </td>
                         </tr>
+                        <tr class="CategoryRow">
+                            <td>
+                                Service Name
+                            </td>
+                            <td>
+                                Suppler
+                            </td>
+                            <td>
+                                Service Type
+                            </td>
+                        </tr>
+                        <tr class="CategoryRow">
+                            <td>
+                                Service Name
+                            </td>
+                            <td>
+                                Suppler
+                            </td>
+                            <td>
+                                Service Type
+                            </td>
+                        </tr>
+                        <tr class="CategoryRow">
+                            <td>
+                                Service Name
+                            </td>
+                            <td>
+                                Suppler
+                            </td>
+                            <td>
+                                Service Type
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="box box-primary">
             <div class="scroll-columns">
-                <table class="table table-bordered table-striped table-condensed cf">
+                <table  id="serviceRate" class="table table-bordered table-striped table-condensed cf">
                     <thead class="cf">
                         <tr>
                             <th>
@@ -127,6 +205,61 @@
                         </tr>
                     </thead>
                     <tbody id="tableCategorys">
+                        <tr class="CategoryRow">
+                            <td>
+                                Service Name
+                            </td>
+                            <td>
+                                Suppler
+                            </td>
+                            <td>
+                                Service Type
+                            </td>
+                        </tr>
+                        <tr class="CategoryRow">
+                            <td>
+                                Service Name
+                            </td>
+                            <td>
+                                Suppler
+                            </td>
+                            <td>
+                                Service Type
+                            </td>
+                        </tr>
+                        <tr class="CategoryRow">
+                            <td>
+                                Service Name
+                            </td>
+                            <td>
+                                Suppler
+                            </td>
+                            <td>
+                                Service Type
+                            </td>
+                        </tr>
+                        <tr class="CategoryRow">
+                            <td>
+                                Service Name
+                            </td>
+                            <td>
+                                Suppler
+                            </td>
+                            <td>
+                                Service Type
+                            </td>
+                        </tr>
+                        <tr class="CategoryRow">
+                            <td>
+                                Service Name
+                            </td>
+                            <td>
+                                Suppler
+                            </td>
+                            <td>
+                                Service Type
+                            </td>
+                        </tr>
                         <tr class="CategoryRow">
                             <td>
                                 Service Name
@@ -146,5 +279,36 @@
 </div>
 @section Scripts {
     @Scripts.Render("~/AdminLTE/plugins/icheck/js")
+
+<script>
+    $("#serviceName tr").click(function () {
+        $(this).addClass('selected').siblings().removeClass('selected');
+        var value = $(this).find('td:first').html();
+        debugger;
+        //alert($(this));
+    });
+    $("#serviceDate tr").click(function () {
+        $(this).addClass('selected').siblings().removeClass('selected');
+        var value = $(this).find('td:first').html();
+        //alert($(this));
+    });
+    $("#serviceRate tr").click(function () {
+        $(this).addClass('selected').siblings().removeClass('selected');
+        var value = $(this).find('td:first').html();
+        //alert($(this));
+    });
+    $('.ok').on('click', function (e) {
+        alert($("#table tr.selected td:first").html());
+    });
+    //$(document).ready(function () {
+    //    $("#serviceName").find('tbody tr:first').addClass('selected');
+    //    //alert("document loaded 1");
+    //});
+
+    //$(window).on("load", function () {
+    //    alert("window loaded 2");
+    //});
+</script>
 }
+
 

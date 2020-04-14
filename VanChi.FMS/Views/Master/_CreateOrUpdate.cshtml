@@ -1,0 +1,626 @@
+﻿
+@{
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Update Service";
+}
+<h2></h2>
+@section Menu {
+    @Scripts.Render("~/Scripts/Master/ServiceContractManager/menu")
+}
+
+@section button {
+    <section class="content-header">
+        @*@ViewBag.Title
+            <small>@ViewBag.SubTitle</small>*@
+        <div class="pull-left">
+
+            <button type="button" name="importexcel" onclick="ImportProduct()" class="btn btn-primary btn-sm">
+                <i class="fa fa-floppy-o"></i>
+                Lưu
+            </button>
+            <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("ExportXlsx")">
+                <i class="fa fa-floppy-o"></i>
+                Lưu và tiếp tục
+            </a>
+            <small><i class="fa fa-arrow-circle-left"></i><a href="/Administrator/Order">Quay lại</a></small>
+        </div>
+
+    </section>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#activity" data-toggle="tab">Hợp đồng dịch vụ </a></li>
+                <li><a href="#timeline" data-toggle="tab">Thời gian hợp đồng</a></li>
+                <li><a href="#settings" data-toggle="tab">Giá hợp đồng</a></li>
+                @Html.RenderBootstrapTabHeader("tab-ServiceInfo", "Hợp đồng dịch vụ", true)
+                @Html.RenderBootstrapTabHeader("tab-ServiceDate", "Thời gian hợp đồng", false)
+                @Html.RenderBootstrapTabHeader("tab-ServiceRate", "Giá hợp đồng", false)
+            </ul>
+            <div class="tab-content">
+                @Html.RenderBootstrapTabContent("tab-ServiceInfo", @TabServiceInfo(), true)
+                @Html.RenderBootstrapTabContent("tab-ServiceDate", @TabServiceDate(), false)
+                @Html.RenderBootstrapTabContent("tab-ServiceRate", @TabServiceRate(), false)
+                <div class="active tab-pane" id="activity">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tên dịch vụ</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tên dịch vụ hợp đồng">
+                    </div>
+                    <div class="form-group">
+                        <div class="mailbox-controls">
+                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                                <i class="fa fa-square-o"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                            </div>
+                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                            <div class="pull-right">
+                                1-50/200
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="serviceName" class="table table-bordered table-striped table-condensed cf">
+                            <thead class="cf">
+                                <tr>
+                                    <th>
+                                        Tên nhà cung cấp
+                                    </th>
+                                    <th>
+                                        Số điện thoại
+                                    </th>
+                                    <th>
+                                        Địa chỉ liên hệ
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableCategorys">
+                                <tr class="CategoryRow">
+                                    <td>
+                                        Service Name 1
+                                    </td>
+                                    <td>
+                                        Suppler
+                                    </td>
+                                    <td>
+                                        Service Type
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        Service Name 2
+                                    </td>
+                                    <td>
+                                        Suppler
+                                    </td>
+                                    <td>
+                                        Service Type
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        Service Name 3
+                                    </td>
+                                    <td>
+                                        Suppler
+                                    </td>
+                                    <td>
+                                        Service Type
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        Service Name 5
+                                    </td>
+                                    <td>
+                                        Suppler
+                                    </td>
+                                    <td>
+                                        Service Type
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <div class="mailbox-controls">
+                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                                <i class="fa fa-square-o"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                            </div>
+                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                            <div class="pull-right">
+                                1-50/200
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="serviceName" class="table table-bordered table-striped table-condensed cf">
+                            <thead class="cf">
+                                <tr>
+                                    <th>
+                                        Từ ngày
+                                    </th>
+                                    <th>
+                                        Đến ngày
+                                    </th>
+                                    <th>
+                                        Ghi chú
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableCategorys">
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <div class="mailbox-controls">
+                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                                <i class="fa fa-square-o"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                            </div>
+                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                            <div class="pull-right">
+                                1-50/200
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="serviceName" class="table table-bordered table-striped table-condensed cf">
+                            <thead class="cf">
+                                <tr>
+                                    <th>
+                                        Từ ngày
+                                    </th>
+                                    <th>
+                                        Đến ngày
+                                    </th>
+                                    <th>
+                                        Ghi chú
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableCategorys">
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="timeline">
+                    <div class="form-group">
+                        <div class="mailbox-controls">
+                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                                <i class="fa fa-square-o"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                            </div>
+                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                            <div class="pull-right">
+                                1-50/200
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="serviceName" class="table table-bordered table-striped table-condensed cf">
+                            <thead class="cf">
+                                <tr>
+                                    <th>
+                                        Từ ngày
+                                    </th>
+                                    <th>
+                                        Đến ngày
+                                    </th>
+                                    <th>
+                                        Ghi chú
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableCategorys">
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <div class="mailbox-controls">
+                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                                <i class="fa fa-square-o"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                            </div>
+                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                            <div class="pull-right">
+                                1-50/200
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="serviceName" class="table table-bordered table-striped table-condensed cf">
+                            <thead class="cf">
+                                <tr>
+                                    <th>
+                                        Từ ngày
+                                    </th>
+                                    <th>
+                                        Đến ngày
+                                    </th>
+                                    <th>
+                                        Ghi chú
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableCategorys">
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        01/01/2020
+                                    </td>
+                                    <td>
+                                        01/12/2020
+                                    </td>
+                                    <td>
+                                        Ghi chú
+                                    </td>
+                                    <td>
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="settings">
+                    <div class="form-group">
+                        <table id="serviceName" class="table table-bordered table-striped table-condensed cf">
+                            <thead class="cf">
+                                <tr>
+                                    <th>
+                                        Tên nhà cung cấp
+                                    </th>
+                                    <th>
+                                        Số điện thoại
+                                    </th>
+                                    <th>
+                                        Địa chỉ liên hệ
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableCategorys">
+                                <tr class="CategoryRow">
+                                    <td>
+                                        Service Name 1
+                                    </td>
+                                    <td>
+                                        Suppler
+                                    </td>
+                                    <td>
+                                        Service Type
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        Service Name 2
+                                    </td>
+                                    <td>
+                                        Suppler
+                                    </td>
+                                    <td>
+                                        Service Type
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        Service Name 3
+                                    </td>
+                                    <td>
+                                        Suppler
+                                    </td>
+                                    <td>
+                                        Service Type
+                                    </td>
+                                </tr>
+                                <tr class="CategoryRow">
+                                    <td>
+                                        Service Name 5
+                                    </td>
+                                    <td>
+                                        Suppler
+                                    </td>
+                                    <td>
+                                        Service Type
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@helper TabServiceInfo()
+{
+                    /**/
+    @Html.Partial("_CreateOrUpdateInfo")
+}
+@helper TabServiceDate()
+{
+                    /**/
+    @Html.Partial("_CreateOrUpdateDate")
+}
+@helper TabServiceRate()
+{
+                    /**/
+    @Html.Partial("_CreateOrUpdateRate")
+}
+@section Scripts {
+    @Scripts.Render("~/AdminLTE/plugins/icheck/js")
+}
+<script>
+
+</script>

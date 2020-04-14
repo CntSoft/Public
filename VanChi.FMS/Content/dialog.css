@@ -1,0 +1,76 @@
+﻿
+
+/*div.ui-dialog {
+    margin: 30px auto;
+    position: relative;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,.2);
+    outline: 0;
+    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+}
+
+    div.ui-dialog .ui-widget-header {
+        min-height: 16.43px;
+        padding: 8px;
+        background-image: none;
+        background-color: transparent;
+        border: 0px;
+        font-size: 16px;
+        margin: 0px;
+    }
+
+    div.ui-dialog .ui-dialog-titlebar-close {
+        position: absolute;
+        right: .5em;
+        width: 21px;
+        margin: 0px 0 0 0;
+        padding: 1px;
+        height: auto !important;
+        border: 0px !important;
+        outline: 0;
+        background: none !important;
+        min-width: auto !important;
+    }
+
+.ui-dialog .ui-dialog-titlebar-close:before {
+    content: '\f00d ';
+    font-family: 'FontAwesome';
+    font-size: 18px;
+    font-weight: normal;
+    color: #666;
+}
+
+div.ui-dialog .ui-dialog-content {
+    position: relative;
+    border: 0;
+    padding: 0px;
+    background: none;
+    overflow: hidden;
+    height: 100%;
+}
+    */
+.popup-body {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 50px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 5px 10px;
+}
+
+div.popup-footer {
+    padding: 5px 10px;
+    border-top: 1px solid #e5e5e5;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.ui-front{ z-index:1000 !important;}
+

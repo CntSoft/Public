@@ -12,7 +12,11 @@
     @Styles.Render("~/AdminLTE/bootstrap/css")
     @Styles.Render("~/AdminLTE/dist/css")
     @Styles.Render("~/AdminLTE/dist/css/skins")
-
+    @Scripts.Render("~/AdminLTE/plugins/jquery/js")
+    <!-- ddd-->
+    <link rel="stylesheet" type="text/css" href="~/Content/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/dialog.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/custom.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -384,7 +388,7 @@
             </section>
         </aside>
         <div class="content-wrapper">
-                @RenderSection("button", required: false)
+            @RenderSection("button", required: false)
             <section class="content">
                 @RenderBody()
             </section>
@@ -546,8 +550,6 @@
         </aside>
         <div class="control-sidebar-bg"></div>
     </div>
-
-    @Scripts.Render("~/AdminLTE/plugins/jquery/js")
     @RenderSection("menu", required: false)
     @Scripts.Render("~/AdminLTE/bootstrap/js")
     @Scripts.Render("~/AdminLTE/plugins/slimscroll/js")
@@ -555,5 +557,11 @@
     @Scripts.Render("~/Scripts/Shared/_Layout")
     @Scripts.Render("~/AdminLTE/dist/js")
     @RenderSection("scripts", required: false)
+    @*<script src="~/Scripts/jquery-ui.js" type="text/javascript"></script>*@
+    @*<script type="text/javascript" src="~/Content/assets/bootstrap/js/bootstrap.js"></script>*@
+    <script src="~/Admin/plugins/jquery-ui/js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/Shared/vanchi.modaldialog.js" type="text/javascript"></script>
+    <script src="~/Scripts/Shared/vanchi.utilities.js" type="text/javascript"></script>
+    <script src="~/Scripts/Shared/vanchi.services.js" type="text/javascript"></script>
 </body>
 </html>

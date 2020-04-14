@@ -90,6 +90,10 @@ namespace VanChi.FMS.Controllers
         {
             return View();
         }
+        public ActionResult AddSupplier()
+        {
+            return PartialView("_AddSupplier");
+        }
         #endregion
     }
 }

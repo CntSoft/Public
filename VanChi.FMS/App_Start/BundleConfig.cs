@@ -227,7 +227,11 @@ namespace VanChi.FMS
         private static void RegisterShared(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/Scripts/Shared/_Layout").Include(
-                "~/Scripts/Shared/_Layout.js"));
+                "~/Scripts/Shared/_Layout.js"
+                , "~/Scripts/Shared/vanchi.modaldialog.js"
+                , "~/Scripts/Shared/vanchi.services.js"
+                , "~/Scripts/Shared/vanchi.utilities.js"
+                ));
         }
         private static void RegisterMaster(BundleCollection bundles)
         {
